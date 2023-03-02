@@ -6,7 +6,7 @@
 package controller.student;
 
 import controller.authentication.BaseRequiredAuthenticatedController;
-import dal.GroupDBContext;
+import dal.GrouDBContext;
 import dal.StudentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,8 +39,8 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response,User user)
     throws ServletException, IOException {
-        GroupDBContext dbDept = new GroupDBContext();
-        ArrayList<Group> groups = dbDept.all();
+        GrouDBContext dbGroup = new GrouDBContext();
+        ArrayList<Group> groups = dbGroup.all();
         request.setAttribute("groups", groups);
         
         StudentDBContext dbStu = new StudentDBContext();
@@ -64,8 +64,11 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
         String raw_name = request.getParameter("name");
         String raw_gender = request.getParameter("gender");
         String raw_dob = request.getParameter("dob");
-        String raw_groupID = request.getParameter("groupID");
-        
+        String raw_gmail = request.getParameter("gmail");
+        String raw_phone = request.getParameter("phone");
+        String raw_user = request.getParameter("username");
+        String raw_groupid = request.getParameter("groupID");
+
         // validate input data
         
         Student s = new Student();
@@ -73,8 +76,13 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
         s.setName(raw_name);
         s.setGender(raw_gender.equals("male"));
         s.setDob(Date.valueOf(raw_dob));
+        s.setGmail(raw_gmail);
+        s.setPhone(raw_phone);
+        User u = new User();
+        u.setUsername(raw_user);
+        s.setUser(u);
         Group g = new Group();
-        g.setId(Integer.parseInt(raw_groupID));
+        g.setId(Integer.parseInt(raw_groupid));
         s.setGroup(g);
         
         StudentDBContext db = new StudentDBContext();

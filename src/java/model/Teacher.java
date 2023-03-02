@@ -8,9 +8,9 @@ import java.sql.Date;
 
 /**
  *
- * @author sonnt
+ * @author Doan Ngoc Vu
  */
-public class Student {
+public class Teacher {
     private int id;
     private String name;
     private boolean gender;
@@ -18,16 +18,7 @@ public class Student {
     private String gmail;
     private String phone;
     private User user;
-    private Group group;
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-    
     public int getId() {
         return id;
     }
@@ -68,14 +59,6 @@ public class Student {
         this.gmail = gmail;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -83,6 +66,15 @@ public class Student {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
     
     
 }

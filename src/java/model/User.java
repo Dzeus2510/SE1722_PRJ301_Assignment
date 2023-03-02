@@ -12,6 +12,7 @@ public class User {
     private String username;
     private String password;
     private String displayname;
+    private boolean role;
 
     public String getUsername() {
         return username;
@@ -35,6 +36,14 @@ public class User {
 
     public void setDisplayname(String displayname) {
         this.displayname = displayname;
+    }
+
+    public boolean isRole() {
+        return role;
+    }
+
+    public void setRole(boolean role) {
+        this.role = role;
     }
     
 }

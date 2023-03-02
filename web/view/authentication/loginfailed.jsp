@@ -1,3 +1,8 @@
+<%-- 
+    Document   : loginfailed
+    Created on : Feb 26, 2023, 7:46:14 PM
+    Author     : Doan Ngoc Vu
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,8 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Logout successful!</h1>
-        <br/>
+        <h1>Login Failed</h1>
+        <form action="Loginfailed" method="POST">
+        </form>
         You will be directed to /login after <span id="time"></span> seconds
         <script> 
         var count =3;

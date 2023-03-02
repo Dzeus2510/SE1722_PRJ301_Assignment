@@ -1,8 +1,3 @@
-<%-- 
-    Document   : bydept
-    Created on : Feb 23, 2023, 8:28:56 AM
-    Author     : sonnt
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,14 +9,14 @@
     </head>
     <body>
         <form action="dept" method="GET">
-            <c:forEach items="${requestScope.depts}" var="d">
+            <c:forEach items="${requestScope.groups}" var="g">
                 <input type="checkbox"
-                       <c:forEach items="${requestScope.dids}" var="did">
-                           <c:if test="${d.id eq did}">   
+                       <c:forEach items="${requestScope.groupIDs}" var="groupID">
+                           <c:if test="${g.id eq groupID}">   
                                checked="checked"
                            </c:if>
                        </c:forEach>
-                       name="did" value="${d.id}"/> ${d.name} 
+                       name="groupID" value="${g.id}"/> ${g.name} 
             </c:forEach>
             <br/>
             <input type="submit" value="Search"/>
@@ -33,7 +28,9 @@
                     <td>Name</td>
                     <td>Gender</td>
                     <td>Dob</td>
-                    <td>Department</td>
+                    <td>Gmail</td>
+                    <td>Phone Number</td>
+                    <td>Group</td>
                 </tr>
                 <c:forEach items="${requestScope.students}" var="s" varStatus="loop">
                     <tr 
@@ -48,7 +45,9 @@
                         <fmt:formatDate type = "date" 
                                         value = "${s.dob}" />
                 </td>
-                <td>${s.dept.name}</td>
+                <td>${s.gmail}</td>
+                <td>${s.phone}</td>
+                <td>${s.group.name}</td>
             </tr>
         </c:forEach>
     </table>

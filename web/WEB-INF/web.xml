@@ -40,6 +40,10 @@
         <servlet-name>SearchByGroupController</servlet-name>
         <servlet-class>controller.student.SearchByGroupController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Loginfailed</servlet-name>
+        <servlet-class>controller.authentication.Loginfailed</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
         <url-pattern>/student/list</url-pattern>
@@ -78,7 +82,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchByGroupController</servlet-name>
-        <url-pattern>/student/search/Group</url-pattern>
+        <url-pattern>/student/search/bygroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Loginfailed</servlet-name>
+        <url-pattern>/loginfailed</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

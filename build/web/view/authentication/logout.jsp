@@ -1,8 +1,3 @@
-<%-- 
-    Document   : logout
-    Created on : Feb 21, 2023, 2:11:31 PM
-    Author     : sonnt
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

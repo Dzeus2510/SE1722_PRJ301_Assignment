@@ -1,8 +1,3 @@
-<%-- 
-    Document   : update
-    Created on : Feb 14, 2023, 2:09:51 PM
-    Author     : sonnt
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update</title>
     </head>
     <body>
          <form action="update" method="POST">
@@ -27,13 +22,16 @@
                            </c:if>
                    value="female"/> Female <br/>
             Dob: <input type="date" name="dob" value="${requestScope.s.dob}"/> <br/>
-            Department: <select name="did">
-                <c:forEach items="${requestScope.depts}" var="d">
+            Gmail: <input type="text" value="${requestScope.s.gmail}" name="gmail"/> <br/>
+            Phone: <input type="number" value="${requestScope.s.phone}" name="phone"/> <br/>
+            Username:<input type="text" value="${requestScope.s.user.username eq u.username}" name="username"/> <br/>
+            Group: <select name="groupID">
+                <c:forEach items="${requestScope.groups}" var="g">
                     <option 
-                        <c:if test="${requestScope.s.dept.id eq d.id}">
+                        <c:if test="${requestScope.s.group.id eq g.id}">
                         selected="selected" 
                         </c:if>    
-                            value="${d.id}">${d.name}</option>
+                            value="${g.id}">${g.name}</option>
                 </c:forEach>
             </select> <br/>
             <input type="submit" value="Save"/>

@@ -54,10 +54,14 @@ public class LoginController extends HttpServlet {
         {
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
+            response.sendRedirect(request.getContextPath() + "/student/list");
+            
+                    
         }
         else
         {
             response.getWriter().println("login failed!");
+            response.sendRedirect(request.getContextPath() + "/loginfailed");
         }
     }
 

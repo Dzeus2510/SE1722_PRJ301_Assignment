@@ -1,17 +1,13 @@
-<%-- 
-    Document   : login
-    Created on : Feb 21, 2023, 2:11:23 PM
-    Author     : sonnt
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login Menu</title>
     </head>
     <body>
+        <h1 style="font-family: 'ＭＳ Ｐゴシック', 'MS PGothic', 'メイリオ', Meiryo, sans-serif; font-size: 30px" >ログインメニュー </h1>
         <form action="login" method="POST">
             <label for="email">Username:</label>
             <input type="text" id="username" name="username" required>

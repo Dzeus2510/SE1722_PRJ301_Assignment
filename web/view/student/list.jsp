@@ -1,8 +1,3 @@
-<%-- 
-    Document   : list
-    Created on : Feb 10, 2023, 4:46:06 PM
-    Author     : sonnt
---%>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>List</title>
         <script> 
             function deleteStudent(id)
             {
@@ -48,7 +43,9 @@
                 <fmt:formatDate type = "date" 
          value = "${s.dob}" />
                     </td>
-                    <td>${s.dept.name}</td>
+                    <td>${s.gmail}</td>
+                    <td>${s.phone}</td>
+                    <td>${s.group.name}</td>
                     <td><input type="button" onclick="window.location.href='update?id=${s.id}'" value="Update"/></td>
                 <td><input type="button" onclick="deleteStudent(${s.id});" value="Delete"/></td>
                 </tr>

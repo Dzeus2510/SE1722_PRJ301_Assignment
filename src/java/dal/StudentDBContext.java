@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Group;
 import model.Student;
+import model.User;
 
 /**
  *
@@ -23,14 +24,15 @@ public class StudentDBContext extends DBContext<Student> {
     public void insert(Student model) {
         PreparedStatement stm = null;
         try {
-            String sql = "INSERT INTO Student(sname,gender,dob,sgmail,sphone,groupID) VALUES(?,?,?,?,?,?)";
+            String sql = "INSERT INTO Student(sname,gender,dob,sgmail,sphone,username,groupID) VALUES(?,?,?,?,?,?,?)";
             stm = connection.prepareStatement(sql);
             stm.setString(1, model.getName());
             stm.setBoolean(2, model.isGender());
             stm.setDate(3, model.getDob());
             stm.setString(4, model.getGmail());
             stm.setString(5, model.getPhone());
-            stm.setInt(6, model.getGroup().getId());
+            stm.setString(6, model.getUser().getUsername());
+            stm.setInt(7, model.getGroup().getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,16 +60,18 @@ public class StudentDBContext extends DBContext<Student> {
                     + "      ,[dob] = ?\n"
                     + "      ,[sgmail] = ?\n"
                     + "      ,[sphone] = ?\n"
+                    + "      ,[username] = ?\n"
                     + "      ,[groupID] = ?\n"
                     + " WHERE [sid] = ?";
             stm = connection.prepareStatement(sql);
             stm.setString(1, model.getName());
             stm.setBoolean(2, model.isGender());
             stm.setDate(3, model.getDob());
-            stm.setString(1, model.getGmail());
-            stm.setString(1, model.getPhone());
-            stm.setInt(4, model.getGroup().getId());
-            stm.setInt(5, model.getId());
+            stm.setString(4, model.getGmail());
+            stm.setString(5, model.getPhone());
+            stm.setString(6, model.getUser().getUsername());
+            stm.setInt(7, model.getGroup().getId());
+            stm.setInt(8, model.getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,9 +118,18 @@ public class StudentDBContext extends DBContext<Student> {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT s.[sid],s.sname,s.gender,s.dob,s.sgmail,s.sphoned,g.groupID,g.groupName \n"
-                    + "FROM Student s INNER JOIN Group g\n"
-                    + "ON s.groupID = g.groupID WHERE s.[sid] = ?";
+            String sql = "SELECT s.[sid]\n" +
+"      ,s.[sname]\n" +
+"      ,s.[gender]\n" +
+"      ,s.[dob]\n" +
+"      ,s.[sgmail]\n" +
+"      ,s.[sphone]\n" +
+"      ,s.[username]\n" +
+"      ,g.[groupID]\n" +
+"	  ,g.[groupName]\n" +
+"  FROM [PRJ_diemdanh].[dbo].[Student] s INNER JOIN [PRJ_diemdanh].[dbo].[Group] g\n" +
+"  ON s.[groupID] = g.[groupID]\n" +
+"  WHERE s.[sid] = ?";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, id);
             rs = stm.executeQuery();
@@ -128,7 +141,9 @@ public class StudentDBContext extends DBContext<Student> {
                 s.setDob(rs.getDate("dob"));
                 s.setGmail(rs.getString("sgmail"));
                 s.setPhone(rs.getString("sphone"));
-
+                User u = new User();
+                u.setUsername(rs.getString("username"));
+                s.setUser(u);
                 Group g = new Group();
                 g.setId(rs.getInt("groupID"));
                 g.setName(rs.getString("groupName"));
@@ -165,9 +180,17 @@ public class StudentDBContext extends DBContext<Student> {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT s.[sid],s.sname,s.gender,s.dob,s.sgmail,s.sphone,g.groupID,g.groupName \n"
-                    + "FROM Student s INNER JOIN Group g\n"
-                    + "ON s.groupID = g.groupID";
+            String sql = "SELECT s.[sid]\n" +
+"      ,s.[sname]\n" +
+"      ,s.[gender]\n" +
+"      ,s.[dob]\n" +
+"      ,s.[sgmail]\n" +
+"      ,s.[sphone]\n" +
+"      ,s.[username]\n" +
+"      ,g.[groupID]\n" +
+"	  ,g.[groupName]\n" +
+"  FROM [PRJ_diemdanh].[dbo].[Student] s INNER JOIN [PRJ_diemdanh].[dbo].[Group] g\n" +
+"  ON s.[groupID] = g.[groupID]";
             stm = connection.prepareStatement(sql);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -178,7 +201,9 @@ public class StudentDBContext extends DBContext<Student> {
                 s.setDob(rs.getDate("dob"));
                 s.setGmail(rs.getString("sgmail"));
                 s.setPhone(rs.getString("sphone"));
-
+                User u = new User();
+                u.setUsername(rs.getString("username"));
+                s.setUser(u);
                 Group g = new Group();
                 g.setId(rs.getInt("groupID"));
                 g.setName(rs.getString("groupName"));
@@ -214,9 +239,18 @@ public class StudentDBContext extends DBContext<Student> {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT s.[sid],s.sname,s.gender,s.dob,s.sgmail,s.sphone,g.groupID,g.groupName \n"
-                    + "FROM Student s INNER JOIN Group g\n"
-                    + "ON s.groupID = g.groupID WHERE g.groupID IN (";
+            String sql = "SSELECT s.[sid]\n" +
+"      ,s.[sname]\n" +
+"      ,s.[gender]\n" +
+"      ,s.[dob]\n" +
+"      ,s.[sgmail]\n" +
+"      ,s.[sphone]\n" +
+"      ,s.[username]\n" +
+"      ,g.[groupID]\n" +
+"	  ,g.[groupName]\n" +
+"  FROM [PRJ_diemdanh].[dbo].[Student] s INNER JOIN [PRJ_diemdanh].[dbo].[Group] g\n" +
+"  ON s.[groupID] = g.[groupID]\n" +
+"  WHERE g.[groupID] IN (";
             String params = "";
             for (Integer groupID : groupIDs) {
                 params += "?,";
@@ -236,7 +270,8 @@ public class StudentDBContext extends DBContext<Student> {
                 s.setDob(rs.getDate("dob"));
                 s.setGmail(rs.getString("sgmail"));
                 s.setPhone(rs.getString("sphone"));
-
+                User u = new User();
+                u.setUsername(rs.getString("username"));
                 Group g = new Group();
                 g.setId(rs.getInt("groupID"));
                 g.setName(rs.getString("groupName"));
