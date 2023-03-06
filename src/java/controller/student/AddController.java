@@ -5,7 +5,7 @@
 package controller.student;
 
 import controller.authentication.BaseRequiredAuthenticatedController;
-import dal.GrouDBContext;
+import dal.GroupDBContext;
 import dal.StudentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,10 +19,6 @@ import model.Group;
 import model.Student;
 import model.User;
 
-/**
- *
- * @author sonnt
- */
 public class AddController extends BaseRequiredAuthenticatedController {
 
    
@@ -39,7 +35,7 @@ public class AddController extends BaseRequiredAuthenticatedController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, User user)
             throws ServletException, IOException {
-            GrouDBContext db = new GrouDBContext();
+            GroupDBContext db = new GroupDBContext();
             ArrayList<Group> groups = db.all();
             request.setAttribute("groups", groups);
             request.getRequestDispatcher("../view/student/add.jsp").forward(request, response);
@@ -62,7 +58,6 @@ public class AddController extends BaseRequiredAuthenticatedController {
             String raw_dob = request.getParameter("dob");
             String raw_gmail = request.getParameter("gmail");
             String raw_phone = request.getParameter("phone");
-            String raw_user = request.getParameter("username");
             String raw_groupID = request.getParameter("groupID");
             
 
@@ -73,9 +68,6 @@ public class AddController extends BaseRequiredAuthenticatedController {
             s.setDob(Date.valueOf(raw_dob));
             s.setGmail(raw_gmail);
             s.setPhone(raw_phone);
-            User u = new User();
-            u.setUsername(raw_user);
-            s.setUser(u);
             Group g = new Group();
             g.setId(Integer.parseInt(raw_groupID));
             s.setGroup(g);

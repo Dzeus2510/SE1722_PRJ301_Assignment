@@ -6,7 +6,7 @@
 package controller.student;
 
 import controller.authentication.BaseRequiredAuthenticatedController;
-import dal.GrouDBContext;
+import dal.GroupDBContext;
 import dal.StudentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,10 +20,6 @@ import model.Group;
 import model.Student;
 import model.User;
 
-/**
- *
- * @author sonnt
- */
 public class UpdateController extends BaseRequiredAuthenticatedController {
    
    
@@ -39,7 +35,7 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response,User user)
     throws ServletException, IOException {
-        GrouDBContext dbGroup = new GrouDBContext();
+        GroupDBContext dbGroup = new GroupDBContext();
         ArrayList<Group> groups = dbGroup.all();
         request.setAttribute("groups", groups);
         
@@ -66,7 +62,6 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
         String raw_dob = request.getParameter("dob");
         String raw_gmail = request.getParameter("gmail");
         String raw_phone = request.getParameter("phone");
-        String raw_user = request.getParameter("username");
         String raw_groupid = request.getParameter("groupID");
 
         // validate input data
@@ -78,9 +73,6 @@ public class UpdateController extends BaseRequiredAuthenticatedController {
         s.setDob(Date.valueOf(raw_dob));
         s.setGmail(raw_gmail);
         s.setPhone(raw_phone);
-        User u = new User();
-        u.setUsername(raw_user);
-        s.setUser(u);
         Group g = new Group();
         g.setId(Integer.parseInt(raw_groupid));
         s.setGroup(g);

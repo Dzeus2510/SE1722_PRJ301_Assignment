@@ -5,7 +5,7 @@
 
 package controller.student;
 
-import dal.GrouDBContext;
+import dal.GroupDBContext;
 import dal.StudentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,10 +18,6 @@ import javafx.scene.DepthTest;
 import model.Group;
 import model.Student;
 
-/**
- *
- * @author sonnt
- */
 public class SearchByGroupController extends HttpServlet {
    
     /** 
@@ -33,7 +29,7 @@ public class SearchByGroupController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        GrouDBContext db = new GrouDBContext();
+        GroupDBContext db = new GroupDBContext();
         StudentDBContext dbStu = new StudentDBContext();
         ArrayList<Group> groups = db.all();
         request.setAttribute("groups", groups);

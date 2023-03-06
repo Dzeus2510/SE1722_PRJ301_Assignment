@@ -15,7 +15,6 @@
             Dob: <input type="date" name="dob"/> <br/>
             Gmail:<input type="text" name="gmail"/><br/>
             Phone Number:<input type="number" name="phone"/><br/>
-            Username:<input type="text" name="username"/><br/>
             Group: <select name="groupID">
                 <c:forEach items="${requestScope.groups}" var="g">
                     <option value="${g.id}">${g.name}</option>

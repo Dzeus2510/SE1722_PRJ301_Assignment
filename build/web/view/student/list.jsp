@@ -25,9 +25,9 @@
                 <td>Name</td>
                 <td>Gender</td>
                 <td>Dob</td>
-                <td>Department</td>
-                <td></td>
-                <td></td>
+                <td>Gmail</td>
+                <td>Phone Number</td>
+                <td>Group</td>
             </tr>
             <c:forEach items="${requestScope.students}" var="s" varStatus="loop">
                 <tr 

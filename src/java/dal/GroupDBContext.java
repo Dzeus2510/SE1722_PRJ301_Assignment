@@ -19,7 +19,7 @@ import model.Teacher;
  *
  * @author sonnt
  */
-public class GrouDBContext extends DBContext<Group> {
+public class GroupDBContext extends DBContext<Group> {
 
     @Override
     public void insert(Group model) {
@@ -67,7 +67,7 @@ public class GrouDBContext extends DBContext<Group> {
                 groups.add(g);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(GrouDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GroupDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 rs.close();

@@ -82,7 +82,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchByGroupController</servlet-name>
-        <url-pattern>/student/search/bygroup</url-pattern>
+        <url-pattern>/student/search/group</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Loginfailed</servlet-name>

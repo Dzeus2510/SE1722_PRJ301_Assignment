@@ -8,7 +8,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="dept" method="GET">
+        <form action="group" method="GET">
             <c:forEach items="${requestScope.groups}" var="g">
                 <input type="checkbox"
                        <c:forEach items="${requestScope.groupIDs}" var="groupID">

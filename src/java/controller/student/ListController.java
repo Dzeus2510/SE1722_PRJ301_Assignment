@@ -14,10 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import model.Student;
 
-/**
- *
- * @author sonnt
- */
 public class ListController extends HttpServlet {
 
     @Override
