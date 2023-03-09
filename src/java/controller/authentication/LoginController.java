@@ -6,6 +6,7 @@
 package controller.authentication;
 
 import dal.UserDBContext;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -50,6 +51,7 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
         UserDBContext db = new UserDBContext();
         User user = db.get(username, password);
+        
         if(user != null)
         {
             request.getSession().setAttribute("user", user);
@@ -60,9 +62,13 @@ public class LoginController extends HttpServlet {
         }
         else
         {
+//            request.setAttribute("error", "WRONG USERNAME OR PASSWORD");
+//            RequestDispatcher rd = request.getRequestDispatcher("/login");
+//            rd.include(request, response);
             response.getWriter().println("login failed!");
             response.sendRedirect(request.getContextPath() + "/loginfailed");
         }
+        
     }
 
     /** 

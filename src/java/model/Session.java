@@ -11,7 +11,7 @@ package model;
 public class Session {
     private int id;
     private String name;
-    private Teacher teacher;
+    private Instructor instructor;
     private Course course;
     private Group group;
     private TimeSlot time;
@@ -33,12 +33,12 @@ public class Session {
         this.name = name;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
+    public Instructor getInstructor() {
+        return instructor;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public Course getCourse() {

@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author Doan Ngoc Vu
  */
-public class Teacher {
+public class Instructor {
     private int id;
     private String name;
     private boolean gender;

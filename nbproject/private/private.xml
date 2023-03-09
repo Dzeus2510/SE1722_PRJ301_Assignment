@@ -5,9 +5,11 @@
         <group>
             <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/view/student/search/bygroup.jsp</file>
             <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/WEB-INF/web.xml</file>
-            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/dal/StudentDBContext.java</file>
-            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/controller/student/ListController.java</file>
-            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/dal/GroupDBContext.java</file>
+            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/controller/authentication/LoginController.java</file>
+            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/controller/authentication/Loginfailed.java</file>
+            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/view/student/add.jsp</file>
+            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/view/authentication/loginfailed.jsp</file>
+            <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/view/authentication/login.jsp</file>
             <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/web/view/student/list.jsp</file>
             <file>file:/F:/CodeJava/SE1722_PRJ301_Assignment/src/java/controller/student/SearchByGroupController.java</file>
         </group>

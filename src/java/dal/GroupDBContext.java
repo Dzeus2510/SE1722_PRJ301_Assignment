@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import model.Course;
 import model.Group;
 import model.Student;
-import model.Teacher;
+import model.Instructor;
 
 /**
  *
@@ -61,9 +61,9 @@ public class GroupDBContext extends DBContext<Group> {
                 Course c = new Course();
                 c.setId(rs.getInt("cid"));
                 g.setCourse(c);
-                Teacher t = new Teacher();
-                t.setId(rs.getInt("tid"));
-                g.setTeacher(t);
+                Instructor i = new Instructor();
+                i.setId(rs.getInt("tid"));
+                g.setInstructor(i);
                 groups.add(g);
             }
         } catch (SQLException ex) {

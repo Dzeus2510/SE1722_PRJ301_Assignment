@@ -15,9 +15,12 @@
         <h1>Login Failed</h1>
         <form action="Loginfailed" method="POST">
         </form>
+        <h1 style="font-family: 'ＭＳ Ｐゴシック', 'MS PGothic', 'メイリオ', Meiryo, sans-serif; font-size: 30px; color:red">
+            YOUR ログイン INFORMATION IS WRONG, PLEASE CHECK AGAIN ユーザー名 AND パスワード
+        </h1>
         You will be directed to /login after <span id="time"></span> seconds
         <script> 
-        var count =3;
+        var count =5;
         var time = document.getElementById('time');
         time.innerHTML = count;
         function counting()
