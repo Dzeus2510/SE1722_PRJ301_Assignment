@@ -7,16 +7,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>List</title>
-        <script> 
-            function deleteStudent(id)
-            {
-                var a = confirm("are you sure?");
-                if(a)
-                {
-                    window.location.href='delete?id='+id;
-                }
-            }
-        </script>
     </head>
     <body>
         <table border="1px"> 
@@ -46,12 +36,9 @@
                     <td>${s.gmail}</td>
                     <td>${s.phone}</td>
                     <td>${s.group.name}</td>
-                    <td><input type="button" onclick="window.location.href='update?id=${s.id}'" value="Update"/></td>
-                <td><input type="button" onclick="deleteStudent(${s.id});" value="Delete"/></td>
                 </tr>
                 
             </c:forEach>
         </table>
-        <a href="add">Create new Student</a>
     </body>
 </html>
