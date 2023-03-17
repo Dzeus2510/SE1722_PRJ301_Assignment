@@ -5,6 +5,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +19,8 @@ public class Instructor {
     private String gmail;
     private String phone;
     private User user;
-
+    private ArrayList<Session> sessions = new ArrayList<>();
+    
     public int getId() {
         return id;
     }
@@ -73,6 +75,14 @@ public class Instructor {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
     }
     
     

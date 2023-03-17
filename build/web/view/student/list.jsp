@@ -26,9 +26,10 @@
                     >
                     <td>${s.id}</td>
                     <td>${s.name}</td>
-                    <td><input type="checkbox" 
-                               <c:if test="${s.gender}">checked="checked"</c:if>
-                               /></td>
+                    <td>
+                               <c:if test="${s.gender}">Male</c:if>
+                               <c:if test="${!s.gender}">Female</c:if>
+                               </td>
                     <td>
                 <fmt:formatDate type = "date" 
          value = "${s.dob}" />

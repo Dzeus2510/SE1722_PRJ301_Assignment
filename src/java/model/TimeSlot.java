@@ -5,6 +5,7 @@
 package model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,9 +13,8 @@ import java.sql.Time;
  */
 public class TimeSlot {
     private int id;
-    private int number;
-    private Time start;
-    private Time end;
+    private String time;
+    private ArrayList<Session> sessions = new ArrayList<>();    
 
     public int getId() {
         return id;
@@ -24,29 +24,23 @@ public class TimeSlot {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public String getTime() {
+        return time;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public Time getStart() {
-        return start;
+    public ArrayList<Session> getSessions() {
+        return sessions;
     }
 
-    public void setStart(Time start) {
-        this.start = start;
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
     }
 
-    public Time getEnd() {
-        return end;
-    }
 
-    public void setEnd(Time end) {
-        this.end = end;
-    }
     
     
 }

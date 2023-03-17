@@ -20,6 +20,14 @@
         <servlet-name>Loginfailed</servlet-name>
         <servlet-class>controller.authentication.Loginfailed</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TimeTableController</servlet-name>
+        <servlet-class>controller.timetable.TimeTableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TakeAttendanceController</servlet-name>
+         <servlet-class>controller.attendance.TakeAttendanceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
         <url-pattern>/student/list</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>Loginfailed</servlet-name>
         <url-pattern>/loginfailed</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimeTableController</servlet-name>
+        <url-pattern>/timetable/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeAttendanceController</servlet-name>
+        <url-pattern>/timetable/att</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

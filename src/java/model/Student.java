@@ -5,6 +5,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,14 +19,14 @@ public class Student {
     private String gmail;
     private String phone;
     private User user;
-    private Group group;
+    private ArrayList<Group> groups = new ArrayList<>();
 
-    public Group getGroup() {
-        return group;
+    public ArrayList<Group> getGroups() {
+        return groups;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
     }
     
     public int getId() {

@@ -4,18 +4,21 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Doan Ngoc Vu
  */
 public class Session {
     private int id;
-    private String name;
     private Instructor instructor;
-    private Course course;
     private Group group;
-    private TimeSlot time;
+    private TimeSlot slot;
     private Room room;
+    private Date date;
+    private boolean status;
+
 
     public int getId() {
         return id;
@@ -23,14 +26,6 @@ public class Session {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Instructor getInstructor() {
@@ -41,14 +36,6 @@ public class Session {
         this.instructor = instructor;
     }
 
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     public Group getGroup() {
         return group;
     }
@@ -57,12 +44,12 @@ public class Session {
         this.group = group;
     }
 
-    public TimeSlot getTime() {
-        return time;
+    public TimeSlot getSlot() {
+        return slot;
     }
 
-    public void setTime(TimeSlot time) {
-        this.time = time;
+    public void setSlot(TimeSlot slot) {
+        this.slot = slot;
     }
 
     public Room getRoom() {
@@ -72,6 +59,24 @@ public class Session {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
     
     
 }

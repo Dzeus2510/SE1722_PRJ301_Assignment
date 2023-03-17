@@ -7,7 +7,7 @@ public class Group {
     private String name;
     private Course course;
     private Instructor instructor;
-    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Session> sessions = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -40,14 +40,14 @@ public class Group {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
     
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
     
 }

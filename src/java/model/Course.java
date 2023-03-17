@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Doan Ngoc Vu
@@ -11,6 +13,7 @@ package model;
 public class Course {
     private int id;
     private String name;
+    private ArrayList<Group> groups = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -26,6 +29,14 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
     }
     
     
