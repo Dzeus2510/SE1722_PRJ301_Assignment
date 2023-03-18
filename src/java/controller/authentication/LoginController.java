@@ -49,27 +49,30 @@ public class LoginController extends HttpServlet {
     throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        Boolean role = Boolean.parseBoolean(request.getParameter("role"));
         UserDBContext db = new UserDBContext();
-        User user = db.get(username, password);
+        User user = db.get(username, password, role);
         
         if(user != null)
-        {
+        {   if(user.isRole()==true){
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/student/list");
-            
-                    
+        } else if(user.isRole()==false){
+            request.getSession().setAttribute("user", user);
+            response.getWriter().println("login successful!");
+            response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid=4&from=2023-03-14&to=2023-03-22");
         }
         else
         {
 //            request.setAttribute("error", "WRONG USERNAME OR PASSWORD");
 //            RequestDispatcher rd = request.getRequestDispatcher("/login");
 //            rd.include(request, response);
-            response.getWriter().println("login failed!");
             response.sendRedirect(request.getContextPath() + "/loginfailed");
         }
-        
+        }
     }
+    
 
     /** 
      * Returns a short description of the servlet.

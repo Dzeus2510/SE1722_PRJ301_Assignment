@@ -20,9 +20,9 @@ import model.User;
  */
 public class UserDBContext extends DBContext<User> {
 
-    public User get(String username, String password) {
-        String sql = "SELECT username,displayname FROM [User] \n"
-                + "WHERE username = ? AND [password] =?";
+    public User get(String username, String password, Boolean role) {
+        String sql = "SELECT username,displayname,role FROM [User]\n" +
+"                WHERE username = ? AND [password] = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -35,6 +35,7 @@ public class UserDBContext extends DBContext<User> {
                 User s = new User();
                 s.setUsername(username);
                 s.setDisplayname(rs.getString("displayname"));
+                s.setRole(rs.getBoolean("role"));
                 return s;
             }
         } catch (SQLException ex) {

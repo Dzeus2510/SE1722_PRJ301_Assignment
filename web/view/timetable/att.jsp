@@ -10,9 +10,74 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Attendance</title>
+        <style>
+            #top-right {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 10px;
+		}
+		body {
+			background-color: #fff;
+			font-family: Arial, sans-serif;
+			color: #000;
+		}
+		
+		h1 {
+			color: #F27125;
+			text-align: center;
+		}
+		
+		table {
+			border-collapse: collapse;
+			margin-top: 50px;
+		}
+		
+		table, th, td {
+			border: 1px solid #F27125;
+		}
+		
+		th {
+			background-color: #F27125;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		td {
+			padding: 5px;
+			text-align: center;
+		}
+		
+		input[type="text"] {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+		
+		input[type="submit"] {
+			background-color: #F27125;
+			color: #fff;
+			border: none;
+			padding: 10px;
+			cursor: pointer;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		
+		input[type="submit"]:hover {
+			background-color: #fff;
+			color: #F27125;
+			border: 2px solid #F27125;
+		}
+	
+        </style>
     </head>
     <body>
+        <a id="top-right" href="http://localhost:9999/SE1722_PRJ301_Assignment/logout" style="color: #123456; font-size: 30px">LOGOUT</a>
         <form action="att" method="POST"> 
             <table border="1px">
                 <tr>
