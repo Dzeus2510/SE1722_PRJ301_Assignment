@@ -42,7 +42,7 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
         }
         else
         {
-            response.getWriter().println("access denied!");
+            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
     }
     protected abstract void doGet(HttpServletRequest request, HttpServletResponse response,User user)
@@ -68,7 +68,7 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
         }
         else
         {
-            response.getWriter().println("access denied!");
+            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
     }
 

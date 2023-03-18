@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
         UserDBContext db = new UserDBContext();
         User user = db.get(username, password, role);
         
-        if(user != null)
+        if(user != null){
         {   if(user.isRole()==true){
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
@@ -63,14 +63,16 @@ public class LoginController extends HttpServlet {
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid=4&from=2023-03-14&to=2023-03-22");
         }
-        else
+        }
+        }
+        if(user == null)
         {
 //            request.setAttribute("error", "WRONG USERNAME OR PASSWORD");
 //            RequestDispatcher rd = request.getRequestDispatcher("/login");
 //            rd.include(request, response);
-            response.sendRedirect(request.getContextPath() + "/loginfailed");
+            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
-        }
+           
     }
     
 
