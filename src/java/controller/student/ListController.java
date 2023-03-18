@@ -18,8 +18,7 @@ import model.User;
 
 public class ListController extends BaseRequiredAuthenticatedController {
 
-
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBContext<Student> db = new StudentDBContext();
         ArrayList<Student> students = db.all();
         req.setAttribute("students", students);
@@ -29,12 +28,12 @@ public class ListController extends BaseRequiredAuthenticatedController {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        processRequest(request, response);    
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        processRequest(request, response);
     }
     
 }
