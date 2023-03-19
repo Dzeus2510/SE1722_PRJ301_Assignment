@@ -75,7 +75,8 @@ public class LoginController extends HttpServlet {
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid="+sid+"&from="+monday+"&to="+sunday);
-        }
+                       }
+                }
         }
         else
         {
@@ -84,8 +85,7 @@ public class LoginController extends HttpServlet {
 //            rd.include(request, response);
             response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
-        
-    }
+
     }
     
 
