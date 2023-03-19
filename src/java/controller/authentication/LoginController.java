@@ -69,7 +69,7 @@ public class LoginController extends HttpServlet {
 //            request.setAttribute("error", "WRONG USERNAME OR PASSWORD");
 //            RequestDispatcher rd = request.getRequestDispatcher("/login");
 //            rd.include(request, response);
-            response.sendRedirect(request.getContextPath() + "http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
+            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
         
     }
