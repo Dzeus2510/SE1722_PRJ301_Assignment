@@ -7,10 +7,7 @@ package model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-/**
- *
- * @author sonnt
- */
+
 public class Student {
     private int id;
     private String name;

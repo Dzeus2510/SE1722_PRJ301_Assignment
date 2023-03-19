@@ -15,6 +15,13 @@
                 padding: 10px;
                 border-radius: 5px;
             }
+            #top-left {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                border-radius: 5px;
+            }
             
             table {
                 margin-top: 50px;
@@ -33,6 +40,7 @@
         </style>
     </head>
     <body>
+        <a id="top-left" href="http://localhost:9999/SE1722_PRJ301_Assignment/timetable/att?id=3" style="color: #123456; font-size: 30px">Attendance</a><br/>
         <a id="top-right" href="http://localhost:9999/SE1722_PRJ301_Assignment/logout" style="color: #123456; font-size: 30px">LOGOUT</a><br/>
         <table border="1px"> 
             <tr style="background-color: #F27125">

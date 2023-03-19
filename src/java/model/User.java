@@ -4,15 +4,15 @@
  */
 package model;
 
-/**
- *
- * @author sonnt
- */
+import java.util.ArrayList;
+
+
 public class User {
     private String username;
     private String password;
     private String displayname;
     private boolean role;
+    ArrayList<Student> student = new ArrayList<>();
 
     public String getUsername() {
         return username;
@@ -45,5 +45,14 @@ public class User {
     public void setRole(boolean role) {
         this.role = role;
     }
+
+    public ArrayList<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(ArrayList<Student> student) {
+        this.student = student;
+    }
+    
     
 }

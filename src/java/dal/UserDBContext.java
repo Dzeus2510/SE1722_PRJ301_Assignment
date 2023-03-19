@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Group;
+import model.Student;
 import model.Student;
 import model.User;
 
@@ -21,8 +21,13 @@ import model.User;
 public class UserDBContext extends DBContext<User> {
 
     public User get(String username, String password, Boolean role) {
-        String sql = "SELECT username,displayname,role FROM [User]\n" +
-"                WHERE username = ? AND [password] = ?";
+        String sql = "SELECT u.username\n" +
+"      ,u.displayname\n" +
+"      ,u.role\n" +
+"	  ,s.sid\n" +
+"  FROM [PRJ_diemdanh].[dbo].[User] u LEFT JOIN [PRJ_diemdanh].[dbo].[Student] s \n" +
+"  ON  u.username = s.username\n" +
+"  WHERE u.username = ? AND u.password = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -36,6 +41,10 @@ public class UserDBContext extends DBContext<User> {
                 s.setUsername(username);
                 s.setDisplayname(rs.getString("displayname"));
                 s.setRole(rs.getBoolean("role"));
+                
+                Student stu = new Student();
+                stu.setId(rs.getInt("sid"));
+                s.getStudent().add(stu);
                 return s;
             }
         } catch (SQLException ex) {

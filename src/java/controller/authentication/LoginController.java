@@ -13,6 +13,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import model.Student;
 import model.User;
 
 /**
@@ -47,6 +52,10 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        LocalDate today = LocalDate.now();
+        LocalDate monday = today.with(DayOfWeek.MONDAY);
+        LocalDate sunday = today.with(DayOfWeek.SUNDAY);
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Boolean role = Boolean.parseBoolean(request.getParameter("role"));
@@ -59,9 +68,13 @@ public class LoginController extends HttpServlet {
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/student/list");
         } else if(user.isRole()==false){
+            ArrayList<Student> students = user.getStudent();      
+            if (students != null && !students.isEmpty()) {
+            Student student = students.get(0);
+            int sid = student.getId();
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
-            response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid=4&from=2023-03-14&to=2023-03-22");
+            response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid="+sid+"&from="+monday+"&to="+sunday);
         }
         }
         else
@@ -72,6 +85,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
         }
         
+    }
     }
     
 
