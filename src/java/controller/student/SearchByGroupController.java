@@ -5,7 +5,7 @@
 
 package controller.student;
 
-import controller.authentication.BaseRequiredAuthenticatedController;
+import controller.authentication.BaseRequiredAuthenticatedControllerForInstructor;
 import dal.GroupDBContext;
 import dal.StudentDBContext;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import model.Group;
 import model.Student;
 import model.User;
 
-public class SearchByGroupController extends BaseRequiredAuthenticatedController {
+public class SearchByGroupController extends BaseRequiredAuthenticatedControllerForInstructor {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

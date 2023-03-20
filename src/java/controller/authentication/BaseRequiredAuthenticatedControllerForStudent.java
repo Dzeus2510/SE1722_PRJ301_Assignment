@@ -13,14 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.User;
 
-/**
- *
- * @author sonnt
- */
-public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
+
+public abstract class BaseRequiredAuthenticatedControllerForStudent extends HttpServlet {
 
     private boolean isAuthenticated(HttpServletRequest request) {
-        return request.getSession().getAttribute("user") != null;
+        User u = (User) request.getSession().getAttribute("user");
+        return u != null && u.isRole()== false;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -35,19 +33,18 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(isAuthenticated(request))
-        {
+        if (isAuthenticated(request)) {
             //do business
-            doGet(request, response, (User)request.getSession().getAttribute("user"));
-        }
-        else
-        {
-            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
+            doGet(request, response, (User) request.getSession().getAttribute("user"));
+        } else {
+            response.getWriter().println("access denied!");
         }
     }
-    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response,User user)
+
+    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response, User user)
             throws ServletException, IOException;
-    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response,User user)
+
+    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response, User user)
             throws ServletException, IOException;
 
     /**
@@ -61,14 +58,11 @@ public abstract class BaseRequiredAuthenticatedController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(isAuthenticated(request))
-        {
+        if (isAuthenticated(request)) {
             //do business
-            doPost(request, response, (User)request.getSession().getAttribute("user"));
-        }
-        else
-        {
-            response.sendRedirect("http://localhost:9999/SE1722_PRJ301_Assignment/loginfailed");
+            doPost(request, response, (User) request.getSession().getAttribute("user"));
+        } else {
+            response.getWriter().println("access denied!");
         }
     }
 

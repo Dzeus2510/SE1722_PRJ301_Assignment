@@ -4,7 +4,8 @@
  */
 package controller.student;
 
-import controller.authentication.BaseRequiredAuthenticatedController;
+
+import controller.authentication.BaseRequiredAuthenticatedControllerForInstructor;
 import dal.DBContext;
 import dal.StudentDBContext;
 import jakarta.servlet.ServletException;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import model.Student;
 import model.User;
 
-public class ListController extends BaseRequiredAuthenticatedController {
+public class ListController extends BaseRequiredAuthenticatedControllerForInstructor {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBContext<Student> db = new StudentDBContext();

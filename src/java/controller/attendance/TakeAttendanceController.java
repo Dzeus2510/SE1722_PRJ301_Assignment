@@ -4,7 +4,7 @@
  */
 package controller.attendance;
 
-import controller.authentication.BaseRequiredAuthenticatedController;
+import controller.authentication.BaseRequiredAuthenticatedControllerForInstructor;
 import dal.AttendanceDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ import model.User;
  *
  * @author Doan Ngoc Vu
  */
-public class TakeAttendanceController extends BaseRequiredAuthenticatedController {
+public class TakeAttendanceController extends BaseRequiredAuthenticatedControllerForInstructor {
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -5,7 +5,7 @@
 
 package controller.timetable;
 
-import controller.authentication.BaseRequiredAuthenticatedController;
+import controller.authentication.BaseRequiredAuthenticatedControllerForStudent;
 import dal.StudentDBContext;
 import dal.TimeSlotDBContext;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import util.att.DateTimeHelper;
  *
  * @author sonnt
  */
-public class TimeTableController extends BaseRequiredAuthenticatedController {
+public class TimeTableController extends BaseRequiredAuthenticatedControllerForStudent {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
