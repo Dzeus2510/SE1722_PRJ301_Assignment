@@ -13,8 +13,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import model.Attendance;
+import model.Group;
+import model.Instructor;
 import model.Session;
 import model.Student;
+import model.TimeSlot;
 import model.User;
 
 /**
@@ -55,10 +58,7 @@ public class TakeAttendanceController extends BaseRequiredAuthenticatedControlle
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
         String[] sids = request.getParameterValues("sid");
-        int sessionid = Integer.parseInt(request.getParameter("sessionid"));
-        Session ss = new Session();
-        ss.setId(sessionid);
-        
+        int sessionid = Integer.parseInt(request.getParameter("sess"));
         ArrayList<Attendance> atts = new ArrayList<>();
         for (String sid : sids) {
             boolean status = request.getParameter("status"+sid).equals("present");
@@ -67,16 +67,24 @@ public class TakeAttendanceController extends BaseRequiredAuthenticatedControlle
             Attendance a = new Attendance();
             Student s = new Student();
             s.setId(Integer.parseInt(sid));
+            a.setStudent(s);
+            TimeSlot slot = new TimeSlot();
+            slot.setId(Integer.parseInt(request.getParameter("slot")));
+            Group g = new Group();
+            g.setId(Integer.parseInt(request.getParameter("groupid")));
+            Session ss = new Session();
+            
+            ss.setGroup(g);
+            ss.setSlot(slot);
+            a.setSession(ss);
             a.setId(aid);
             a.setStatus(status);
             a.setComment(description);
-            a.setStudent(s);
-            a.setSession(ss);
             atts.add(a);
         }
-        AttendanceDBContext db = new AttendanceDBContext();
-        db.update(atts, sessionid);
-        response.sendRedirect("att?id="+sessionid);
+        AttendanceDBContext t = new AttendanceDBContext();
+        t.update(atts, sessionid);
+        response.sendRedirect("listattendancegroups");
     }
 
 }

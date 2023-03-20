@@ -4,6 +4,7 @@
  */
 package dal;
 import dal.DBContext;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -127,6 +128,68 @@ public class AttendanceDBContext extends DBContext<Attendance>  {
             }
         }
     }
+    
+    public ArrayList<Attendance> allStudentsBySlotGroupId(Date date, int groupid, int instructorid, int slot, int sessionid) {
+        ArrayList<Attendance> list = new ArrayList<>();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT s.sid,s.sname,g.groupID,g.groupName,ses.slotID,ses.sessionID FROM  \n" +
+"                                      Student s LEFT JOIN [Group] g ON g.groupID = s.groupID \n" +
+"									   left join Course c on c.cid = g.cid \n" +
+"									   LEFT JOIN [Session] ses ON ses.GroupID = g.GroupID \n" +
+"                                       LEFT JOIN [Attendance] a ON ses.sessionid = a.SessionID AND s.sid = a.sid \n" +
+"									   left join Instructor i on ses.tid = i.tid\n" +
+"                                       where ses.Date = ? and g.groupID = ? and i.tid = ? and ses.slotID = ? and ses.SessionID = ? \n" +
+"                    		          order by s.sid";
+            stm = connection.prepareStatement(sql);
+            stm.setDate(1, date);
+            stm.setInt(2, groupid);
+            stm.setInt(3, instructorid);
+            stm.setInt(4, slot);
+            stm.setInt(5, sessionid);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Attendance a = new Attendance();
+                Student s = new Student();
+                s.setId(rs.getInt("sid"));
+                s.setName(rs.getString("sname"));
+                a.setStudent(s);
+                Session ss = new Session();
+                ss.setId(rs.getInt("sessionID"));
+                Group g = new Group();
+                g.setId(rs.getInt("groupID"));
+                g.setName(rs.getString("groupName"));
+                ss.setGroup(g);
+                TimeSlot t = new TimeSlot();
+                t.setId(rs.getInt("slotID"));
+                ss.setSlot(t);
+                a.setSession(ss);
+                list.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+
 
     @Override
     public void insert(Attendance model) {

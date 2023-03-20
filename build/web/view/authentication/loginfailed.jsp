@@ -62,7 +62,8 @@
             YOUR ログイン INFORMATION IS WRONG, PLEASE CHECK AGAIN ユーザー名 AND パスワード <br/>
             REMEMBER THAT YOU HAVE TO ログイン TO BE ABLE TO ACCESS TO THE WEBSITE CONTENTS
         </h1>
-        You will be directed to the login page after <span id="time"></span> seconds
+        You will be directed to the login page after <span id="time"></span> seconds <br/>
+        <img src="img/explode.jpg" >
         <script> 
         var count =5;
         var time = document.getElementById('time');
