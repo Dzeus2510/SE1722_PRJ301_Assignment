@@ -43,7 +43,7 @@
     <body>
         <a id="top-right" href="http://localhost:9999/SE1722_PRJ301_Assignment/logout" style="color: #123456; font-size: 30px">LOGOUT</a>
         <h1 style="font-size: 24px; color: #123456">
-        Activities for "${requestScope.s.name}" <br/>
+        Activities for ${sessionScope.user.displayname} <br/>
         Note: These activities do not include extra-curriculum activities, such as club activities ... <br/>
         Chú thích: Các hoạt động trong bảng dưới không bao gồm hoạt động ngoại khóa, ví dụ như hoạt động câu lạc bộ ...<br/>
         Các phòng bắt đầu bằng AL thuộc tòa nhà Alpha. VD: AL...<br/>

@@ -32,7 +32,7 @@ public class attendanceReportForStudents extends BaseRequiredAuthenticatedContro
         if (raw_std != null && raw_course != null) {
             reportAttendanceForStudentsDBContext r = new reportAttendanceForStudentsDBContext();
             ArrayList<Attendance> attendance = r.allAttendanceByStidCoid(Integer.parseInt(raw_std), Integer.parseInt(raw_course));
-            request.setAttribute("courseid", Integer.parseInt(raw_course));
+            request.setAttribute("cid", Integer.parseInt(raw_course));
             request.setAttribute("attendance", attendance);
         } else {
             reportAttendanceForStudentsDBContext r = new reportAttendanceForStudentsDBContext();

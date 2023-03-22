@@ -19,10 +19,6 @@ import model.Session;
 import model.TimeSlot;
 import model.reportAttendanceForStudents;
 
-/**
- *
- * @author duong
- */
 public class reportAttendanceForStudentsDBContext extends DBContext<reportAttendanceForStudents> {
 
     @Override
@@ -56,7 +52,7 @@ public class reportAttendanceForStudentsDBContext extends DBContext<reportAttend
         ResultSet rs = null;
         try {
             String sql = "SELECT ses.Date,ses.sessionId,ses.slotID,t.slotTime,g.groupID,g.groupName,c.cname,\n" +
-"                    c.cid,r.roomID,r.roomName,a.Status,a.comment,i.tid\n" +
+"                    c.cid,r.roomID,r.roomName,a.Status,a.comment,i.tid, i.tname\n" +
 "                    FROM Student s LEFT JOIN [Group] g ON g.groupID = s.groupID left join Course c \n" +
 "                    on c.cid = g.cid JOIN [Session] ses ON ses.groupID = g.groupID\n" +
 "                    LEFT JOIN [Attendance] a ON ses.sessionid = a.SessionID AND s.sid = a.sid\n" +
@@ -69,16 +65,16 @@ public class reportAttendanceForStudentsDBContext extends DBContext<reportAttend
             rs = stm.executeQuery();
             while (rs.next()) {
                 Attendance a = new Attendance();
-                a.setStatus(rs.getBoolean("status"));
+                a.setStatus(rs.getBoolean("Status"));
                 a.setComment(rs.getString("comment"));
 
                 Session s = new Session();
                 s.setDate(rs.getDate("Date"));
-                s.setId(rs.getInt("sessionID"));
+                s.setId(rs.getInt("sessionId"));
 
                 TimeSlot t = new TimeSlot();
-                t.setId(rs.getInt("TimeSlotID"));
-                t.setTime(rs.getString("SlotTime"));
+                t.setId(rs.getInt("slotID"));
+                t.setTime(rs.getString("slotTime"));
                 s.setSlot(t);
 
                 Group g = new Group();
@@ -87,6 +83,7 @@ public class reportAttendanceForStudentsDBContext extends DBContext<reportAttend
 
                 Instructor i = new Instructor();
                 i.setId(rs.getInt("tid"));
+                i.setName(rs.getString("tname"));
 
                 s.setInstructor(i);
                 Course c = new Course();

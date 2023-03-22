@@ -9,6 +9,10 @@
             body {
                 background-color: #f5f5f5;
                 font-family: 'Roboto', sans-serif;
+                background-image: url("img/explode.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed; 
+                background-size: 100% 100%;
             }
             .container {
                 width: 80%;
@@ -23,6 +27,9 @@
                 color: #ff6600;
                 font-weight: 500;
                 text-transform: uppercase;
+                background-color: white;
+                padding: 10px;
+                display: inline-block;
             }
             p {
                 font-size: 18px;
@@ -32,7 +39,7 @@
                 line-height: 1.5;
             }
             span {
-                font-size: 24px;
+                font-size: 36px;
                 color: #ff6600;
                 font-weight: 500;
             }
@@ -51,9 +58,8 @@
         </style>
     </head>
     <body>
-        <h1>Logout successful!</h1>
-        <br/>
-        You will be directed to the login page after <span id="time"></span> seconds
+        <h1>Logout successful!<br/>
+        You will be directed to the login page after <span id="time"></span> seconds</h1>
         <script> 
         var count =3;
         var time = document.getElementById('time');

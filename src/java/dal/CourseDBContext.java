@@ -13,10 +13,6 @@ import java.util.logging.Logger;
 import model.Course;
 import model.Group;
 
-/**
- *
- * @author duong
- */
 public class CourseDBContext extends DBContext<Course> {
 
     @Override
@@ -51,7 +47,7 @@ public class CourseDBContext extends DBContext<Course> {
 
         try {
             String sql = "select c.cid,g.groupName,l.Date,c.cname,g.groupID from Session l inner join [Group] g\n" +
-"                    on l.Sessionid  = g.GroupID join Course c\n" +
+"                    on l.groupID  = g.groupID join Course c\n" +
 "                    on g.cid = c.cid join Student s\n" +
 "                    on g.groupID = s.groupID \n" +
 "                    where s.sid = ?";
