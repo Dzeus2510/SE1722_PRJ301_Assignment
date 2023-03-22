@@ -21,13 +21,16 @@ import model.User;
 public class UserDBContext extends DBContext<User> {
 
     public User get(String username, String password, Boolean role) {
-        String sql = "SELECT u.username\n" +
-"      ,u.displayname\n" +
-"      ,u.role\n" +
-"	  ,s.sid\n" +
-"  FROM [PRJ_diemdanh].[dbo].[User] u LEFT JOIN [PRJ_diemdanh].[dbo].[Student] s \n" +
-"  ON  u.username = s.username\n" +
-"  WHERE u.username = ? AND u.password = ?";
+        String sql = "SELECT u.[username]\n" +
+"       ,u.[password]\n" +
+"       ,s.[sid]\n" +
+"       ,i.[tid]\n" +
+"       ,u.[role]\n" +
+"       ,u.[displayname]\n" +
+"       FROM [User] u FULL JOIN Student s ON u.username = s.username\n" +
+"	              FULL JOIN Instructor i ON u.username = i.username\n" +
+"       WHERE u.[username] = ?\n" +
+"       AND u.[password] = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -41,10 +44,8 @@ public class UserDBContext extends DBContext<User> {
                 s.setUsername(username);
                 s.setDisplayname(rs.getString("displayname"));
                 s.setRole(rs.getBoolean("role"));
-                
-                Student stu = new Student();
-                stu.setId(rs.getInt("sid"));
-                s.getStudent().add(stu);
+                s.setInstructorId(rs.getInt("tid"));
+                s.setStudentId(rs.getInt("sid"));
                 return s;
             }
         } catch (SQLException ex) {

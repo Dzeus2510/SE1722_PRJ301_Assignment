@@ -11,6 +11,8 @@ public class User {
     private String username;
     private String password;
     private String displayname;
+    private int studentId;
+    private int instructorId;
     private boolean role;
     ArrayList<Student> student = new ArrayList<>();
 
@@ -53,6 +55,23 @@ public class User {
     public void setStudent(ArrayList<Student> student) {
         this.student = student;
     }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public int getInstructorId() {
+        return instructorId;
+    }
+
+    public void setInstructorId(int instructorId) {
+        this.instructorId = instructorId;
+    }
+    
     
     
 }

@@ -52,7 +52,7 @@ public class TakeAttendanceController extends BaseRequiredAuthenticatedControlle
         AttendanceDBContext db = new AttendanceDBContext();
         ArrayList<Attendance> atts = db.getAttendancesBySession(sessionid);
         request.setAttribute("atts", atts);
-        request.getRequestDispatcher("../view/timetable/att.jsp").forward(request, response);
+        request.getRequestDispatcher("../view/instructorview/att.jsp").forward(request, response);
     }
 
     @Override

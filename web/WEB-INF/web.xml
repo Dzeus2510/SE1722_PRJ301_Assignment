@@ -54,7 +54,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TakeAttendanceController</servlet-name>
-        <url-pattern>/timetable/att</url-pattern>
+        <url-pattern>/instructorview/att</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
