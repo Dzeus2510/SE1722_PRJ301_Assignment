@@ -27,8 +27,8 @@ public class attendanceReportForStudents extends BaseRequiredAuthenticatedContro
         ArrayList<Group> groupCourse = c.allCourseByStudentId(user.getStudentId());
         request.setAttribute("course", groupCourse);
 
-        String raw_std = request.getParameter("studenId");
-        String raw_course = request.getParameter("courseId");
+        String raw_std = request.getParameter("sid");
+        String raw_course = request.getParameter("cid");
         if (raw_std != null && raw_course != null) {
             reportAttendanceForStudentsDBContext r = new reportAttendanceForStudentsDBContext();
             ArrayList<Attendance> attendance = r.allAttendanceByStidCoid(Integer.parseInt(raw_std), Integer.parseInt(raw_course));
@@ -39,7 +39,7 @@ public class attendanceReportForStudents extends BaseRequiredAuthenticatedContro
             ArrayList<Attendance> attendance = r.allAttendanceByStidCoid(user.getStudentId(), groupCourse.get(0).getCourse().getId());
             request.setAttribute("attendance", attendance);
         }
-        request.getRequestDispatcher("view/student/attendancereport.jsp").forward(request, response);
+        request.getRequestDispatcher("view/timetable/attendancereport.jsp").forward(request, response);
 
     }
 

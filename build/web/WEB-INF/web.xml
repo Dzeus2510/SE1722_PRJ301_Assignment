@@ -26,7 +26,11 @@
     </servlet>
     <servlet>
         <servlet-name>TakeAttendanceController</servlet-name>
-         <servlet-class>controller.attendance.TakeAttendanceController</servlet-class>
+        <servlet-class>controller.attendance.TakeAttendanceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>attendanceReportForStudent</servlet-name>
+        <servlet-class>controller.timetable.attendanceReportForStudents</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>TakeAttendanceController</servlet-name>
         <url-pattern>/instructorview/att</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>attendanceReportForStudent</servlet-name>
+        <url-pattern>/attendancereport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

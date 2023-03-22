@@ -67,17 +67,14 @@ public class LoginController extends HttpServlet {
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/student/list");
-        } else if(user.isRole()==false){
-            ArrayList<Student> students = user.getStudent();      
-            if (students != null && !students.isEmpty()) {
-            Student student = students.get(0);
-            int sid = student.getId();
+        } else if(user.isRole()==false){     
+            int sid = user.getStudentId();
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
             response.sendRedirect(request.getContextPath() + "/timetable/timetable?sid="+sid+"&from="+monday+"&to="+sunday);
                        }
                 }
-        }
+        
         else
         {
 //            request.setAttribute("error", "WRONG USERNAME OR PASSWORD");
