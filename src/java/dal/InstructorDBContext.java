@@ -29,7 +29,7 @@ public class InstructorDBContext extends DBContext<Student> {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT  i.tid,i.tname\n" +
+            String sql = "SELECT distinct i.tid,i.tname\n" +
 "       ,ses.sessionID,ses.date,ses.status\n" +
 "       ,c.cid, c.cname\n" +
 "       ,g.groupID,g.groupName\n" +
@@ -47,45 +47,39 @@ public class InstructorDBContext extends DBContext<Student> {
             stm.setDate(2, from);
             stm.setDate(3, to);
             rs = stm.executeQuery();
-            Group currentGroup = new Group();
-            currentGroup.setId(-1);
-            while (rs.next()) {
+           while (rs.next()) {
                 if (instructor == null) {
-                Instructor i = new Instructor();
-                i.setId(rs.getInt("tid"));
-                i.setName(rs.getString("tname"));
-                
+                    instructor = new Instructor();
+                    instructor.setId(rs.getInt("tid"));
+                    instructor.setName(rs.getString("tname"));
                 }
-                int gid = rs.getInt("groupID");
-                if (gid != currentGroup.getId()) {
-                    currentGroup = new Group();
-                    currentGroup.setId(rs.getInt("groupID"));
-                    currentGroup.setName(rs.getString("groupName"));
-                    Course c = new Course();
-                    c.setId(rs.getInt("cid"));
-                    c.setName(rs.getString("cname"));
-                    currentGroup.setCourse(c);
-                    
-                }
+
                 Session ses = new Session();
                 ses.setId(rs.getInt("sessionID"));
                 ses.setDate(rs.getDate("date"));
-                ses.setStatus(rs.getBoolean("status"));
-                ses.setGroup(currentGroup);
-                ses.setInstructor(instructor);
-                
+
+                Group group = new Group();
+                group.setId(rs.getInt("groupID"));
+                group.setName("groupName");
+                ses.setGroup(group);
 
                 Room r = new Room();
                 r.setId(rs.getInt("roomID"));
                 r.setName(rs.getString("roomName"));
                 ses.setRoom(r);
 
+                Course c = new Course();
+                c.setId(rs.getInt("cid"));
+                c.setName(rs.getString("cname"));
+                group.setCourse(c);
+
                 TimeSlot t = new TimeSlot();
                 t.setId(rs.getInt("slotID"));
                 t.setTime(rs.getString("slotTime"));
                 ses.setSlot(t);
 
-                currentGroup.getSessions().add(ses);
+                group.getSessions().add(ses);
+                instructor.getGroups().add(group);
 
             }
         } catch (SQLException ex) {

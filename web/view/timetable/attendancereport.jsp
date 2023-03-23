@@ -68,10 +68,17 @@
             td span.absent {
                 color: red;
             }
-        </style>
+            
+        #top-right {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 10px;
+		}
+	</style>
     </head>
     <body>
-        <div class="title"><h1>FPT University Academic Portal</h1></div>        
+        <a id="top-right" href="http://localhost:9999/SE1722_PRJ301_Assignment/logout" style="color: #123456; font-size: 30px">LOGOUT</a>
         <div class="title-detail"><h2>View attendance for ${sessionScope.user.displayname}</h2></div>        
 
 

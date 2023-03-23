@@ -21,7 +21,7 @@
         <servlet-class>controller.authentication.Loginfailed</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>InstuctorTimeTableController</servlet-name>
+        <servlet-name>InstructorTimeTable</servlet-name>
         <servlet-class>controller.attendance.InstructorTimeTableController</servlet-class>
     </servlet>
     <servlet>
@@ -29,7 +29,7 @@
         <servlet-class>controller.timetable.TimeTableController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>TakeAttendanceController</servlet-name>
+        <servlet-name>InstructorTakeAttendanceController</servlet-name>
         <servlet-class>controller.attendance.TakeAttendanceController</servlet-class>
     </servlet>
     <servlet>
@@ -57,7 +57,7 @@
         <url-pattern>/loginfailed</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TakeAttendanceController</servlet-name>
+        <servlet-name>InstructorTakeAttendanceController</servlet-name>
         <url-pattern>/instructorview/att</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -69,7 +69,7 @@
         <url-pattern>/timetable/timetable</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>InstuctorTimeTableController</servlet-name>
+        <servlet-name>InstructorTimeTable</servlet-name>
         <url-pattern>/instructorview/timetable</url-pattern>
     </servlet-mapping>
     <session-config>

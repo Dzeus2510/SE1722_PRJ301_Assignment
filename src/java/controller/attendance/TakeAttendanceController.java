@@ -25,40 +25,23 @@ import model.User;
  * @author Doan Ngoc Vu
  */
 public class TakeAttendanceController extends BaseRequiredAuthenticatedControllerForInstructor {
-   
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-    @Override
+   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
         int sessionid = Integer.parseInt(request.getParameter("id"));
         AttendanceDBContext db = new AttendanceDBContext();
         ArrayList<Attendance> atts = db.getAttendancesBySession(sessionid);
         request.setAttribute("atts", atts);
         request.getRequestDispatcher("../view/instructorview/att.jsp").forward(request, response);
+    
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
         String[] sids = request.getParameterValues("sid");
-        int sessionid = Integer.parseInt(request.getParameter("sess"));
+        int sessionid = Integer.parseInt(request.getParameter("sessionid"));
+        Session ss = new Session();
+        ss.setId(sessionid);
+        
         ArrayList<Attendance> atts = new ArrayList<>();
         for (String sid : sids) {
             boolean status = request.getParameter("status"+sid).equals("present");
@@ -67,25 +50,16 @@ public class TakeAttendanceController extends BaseRequiredAuthenticatedControlle
             Attendance a = new Attendance();
             Student s = new Student();
             s.setId(Integer.parseInt(sid));
-            a.setStudent(s);
-            TimeSlot slot = new TimeSlot();
-            slot.setId(Integer.parseInt(request.getParameter("slot")));
-            Group g = new Group();
-            g.setId(Integer.parseInt(request.getParameter("groupid")));
-            Session ss = new Session();
-            
-            ss.setGroup(g);
-            ss.setSlot(slot);
-            a.setSession(ss);
             a.setId(aid);
             a.setStatus(status);
             a.setComment(description);
+            a.setStudent(s);
+            a.setSession(ss);
             atts.add(a);
         }
-        AttendanceDBContext t = new AttendanceDBContext();
-        t.update(atts, sessionid);
-        response.sendRedirect("listattendancegroups");
+        AttendanceDBContext db = new AttendanceDBContext();
+        db.update(atts, sessionid);
+        response.sendRedirect("att?id="+sessionid);
     }
-
 }
 

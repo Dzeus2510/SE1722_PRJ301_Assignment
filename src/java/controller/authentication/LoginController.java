@@ -64,9 +64,10 @@ public class LoginController extends HttpServlet {
         
         if(user != null)
         {   if(user.isRole()==true){
+            int tid = user.getInstructorId();
             request.getSession().setAttribute("user", user);
             response.getWriter().println("login successful!");
-            response.sendRedirect(request.getContextPath() + "/student/list");
+            response.sendRedirect(request.getContextPath() + "/instructorview/timetable?tid="+tid+"&from="+monday+"&to="+sunday);
         } else if(user.isRole()==false){     
             int sid = user.getStudentId();
             request.getSession().setAttribute("user", user);

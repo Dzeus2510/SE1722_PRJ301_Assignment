@@ -20,6 +20,7 @@ public class Instructor {
     private String phone;
     private User user;
     private ArrayList<Session> sessions = new ArrayList<>();
+    private ArrayList<Group> groups = new ArrayList<>();
     
     public int getId() {
         return id;
@@ -83,6 +84,14 @@ public class Instructor {
 
     public void setSessions(ArrayList<Session> sessions) {
         this.sessions = sessions;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
     }
     
     
