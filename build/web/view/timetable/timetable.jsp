@@ -60,8 +60,7 @@
                     <td>${d}<br/><fmt:formatDate value="${d}" pattern="EEEE"/>
             </td>
         </c:forEach>
-
-    </tr>
+            
     <c:forEach items="${requestScope.slots}" var="slot"> 
         <tr>
             <td style="background-color: #F27125; color: black">${slot.time}</td>

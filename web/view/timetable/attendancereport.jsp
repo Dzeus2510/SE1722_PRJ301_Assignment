@@ -79,8 +79,10 @@
     </head>
     <body>
         <a id="top-right" href="http://localhost:9999/SE1722_PRJ301_Assignment/logout" style="color: #123456; font-size: 30px">LOGOUT</a>
-        <div class="title-detail"><h2>View attendance for ${sessionScope.user.displayname}</h2></div>        
-
+        <div class="title-detail"><h2>View attendance for ${sessionScope.user.displayname}<br/> 
+                
+            </h2></div>        
+        
 
         <c:if test="${requestScope.attendance ne null}">
 
